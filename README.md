@@ -11,14 +11,6 @@
 
 > .Net 6.0 -> https://dotnet.microsoft.com/download/dotnet/6.0
 
-> Docker -> https://docs.docker.com/desktop/
-
-## Local tests (docker)
-
-> docker build -f Dockerfile -t pbuilder:latest .
-
-> docker run --rm -d -p 6333:80 pbuilder
-
 ## Local tests (dotnet)
 
 > dotnet restore

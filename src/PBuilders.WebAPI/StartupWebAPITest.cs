@@ -1,15 +1,12 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MongoDB.Driver;
-using PBuilders.Domain.BynarySearchTree.Entity;
 
 namespace PBuilders.WebAPI
 {
-    public class Startup
+    public class StartupWebAPITest
     {
         public void ConfigureServices(IServiceCollection services)
         {
@@ -39,21 +36,6 @@ namespace PBuilders.WebAPI
             {
                 endpoints.MapControllers();
             });
-
-            DBInicializer();
-        }
-
-        private void DBInicializer()
-        {
-            var client = new MongoClient(Environment.GetEnvironmentVariable("MONGODB_SERVER"));
-            var database = client.GetDatabase(Environment.GetEnvironmentVariable("MONGODB_DATABASE"));
-            var collection = database.GetCollection<Tree>("tree");
-
-            if (collection.CountDocuments(FilterDefinition<Tree>.Empty) == 0)
-            {
-                var newTree = new Tree().GenerateRandomTree();
-                collection.InsertOne(newTree);
-            }
         }
     }
 }

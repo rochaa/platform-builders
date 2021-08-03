@@ -10,11 +10,11 @@ using Xunit;
 
 namespace PBuilders.WebAPI.Test
 {
-    public class PalindromeControllerTest : IClassFixture<WebApplicationFactory<Startup>>
+    public class PalindromeControllerTest : IClassFixture<WebApplicationFactory<StartupWebAPITest>>
     {
         private readonly HttpClient _client;
 
-        public PalindromeControllerTest(WebApplicationFactory<Startup> fixture)
+        public PalindromeControllerTest(WebApplicationFactory<StartupWebAPITest> fixture)
         {
             _client = fixture.CreateClient();
         }
